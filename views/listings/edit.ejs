@@ -1,0 +1,66 @@
+<% layout("layouts/boilerplate") -%>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form action="/listHome/<%=listdata._id%>?_method=PUT" novalidate method="post" enctype="multipart/form-data">
+                <h2>Edit List Item</h2>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="listing[title]" value="<%=listdata.title%>">
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description</label>
+                    <textarea class="form-control"  name="listing[description]"><%=listdata.description%></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="categories" class="form-label">Select Category</label>
+                    <select class="form-select" id="categories" name="listing[categories]" required>
+                        <option value="">Select a category...</option>
+                        <option value="Beachfront" <%= listdata.categories === 'Beachfront' ? 'selected' : '' %>>Beachfront</option>
+                        <option value="Treehouse" <%= listdata.categories === 'Treehouse' ? 'selected' : '' %>>Treehouse</option>
+                        <option value="Iconic cities" <%= listdata.categories === 'Iconic cities' ? 'selected' : '' %>>Iconic cities</option>
+                        <option value="Historical place" <%= listdata.categories === 'Historical place' ? 'selected' : '' %>>Historical place</option>
+                        <option value="Farm" <%= listdata.categories === 'Farm' ? 'selected' : '' %>>Farm</option>
+                        <option value="Countryside" <%= listdata.categories === 'Countryside' ? 'selected' : '' %>>Countryside</option>
+                        <option value="Lake view" <%= listdata.categories === 'Lake view' ? 'selected' : '' %>>Lake view</option>
+                        <option value="Swimming pools" <%= listdata.categories === 'Swimming pools' ? 'selected' : '' %>>Swimming pools</option>
+                        <option value="Top of the world" <%= listdata.categories === 'Top of the world' ? 'selected' : '' %>>Top of the world</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Original Listing Image</label><br>
+                    <img name="imageUrl" id="org-img" src="<%= originalImgUrl %>" alt="img">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload new Image</label>
+                    <input type="file" class="form-control" name="listing[image]" >
+                </div>
+                
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number"  class="form-control"  name="listing[price]" value="<%=listdata.price%>">
+                    </div>
+                    
+                    <div class="mb-3 col-md-8">
+                        <label for="Country" class="form-label">Country</label>
+                        <input type="text" class="form-control"  name="listing[country]" value="<%=listdata.country%>">
+                    </div>
+                </div>
+                
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" name="listing[location]" value="<%=listdata.location%>">
+                </div>
+    
+                <br><br>
+                <button type="submit" class="btn btn-dark mb-3 form-btn">Edit</button>
+            </form>
+        </div>
+       
+    </div>
+    
+</body>
